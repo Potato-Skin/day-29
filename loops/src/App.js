@@ -49,9 +49,41 @@ function App() {
   //   return b.firstName.localeCompare(a.firstName);
   // });
 
+  const [name, setName] = React.useState("Luca Janssens");
+
+  function handleInputChange(event) {
+    console.log(
+      "event:",
+      event.target.value
+      // typeof event.target.value,
+      // event. /target.valueAsNumber
+    );
+    console.log("DONT GO CHANGING");
+    setName(event.target.value);
+  }
+
+  // input.onchange = event => {
+  //   console.log("DONT GO CHANGING")
+  // }
+  // dedupping
+  // debounce -> debounce (time, function)
+
   return (
     <div className="App">
       <h1>List of friends</h1>
+      <input name="name" placeholder="Write da name" />
+      {/* 👆 this is an uncontrolled input */}
+      <br />
+      <input
+        name="name"
+        placeholder="Write da name"
+        value={name}
+        onChange={handleInputChange}
+      />
+
+      <input type="number" onChange={handleInputChange} />
+      {/* 👆 this is NOT an uncontrolled input */}
+      <br />
       <button onClick={sortAsc}>SORT ASC</button>
       <div />
       <button onClick={sortDesc}>SORT DESC</button>
